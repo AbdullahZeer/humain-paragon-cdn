@@ -1,10 +1,15 @@
-# 🎓 Open edX Integration Guide
+# 🎓 Open edX Integration Guide - CORRECTED
 
-## ✅ Ready to Use
+## ✅ How to Use HUMAIN Paragon CDN with Open edX
 
-Your HUMAIN Paragon CDN is now **fully integrated** with Open edX! The custom design tokens are merged directly into `light.min.css`, so Open edX will automatically use your HUMAIN brand colors without any additional configuration.
+The HUMAIN Paragon CDN provides properly themed CSS files with your custom brand colors. Here's the correct way to configure it:
 
-## 🚀 How to Configure in Open edX
+### Files Available
+- **`core.min.css`** - Paragon core component library (required)
+- **`light.min.css`** - Paragon light theme with default colors (required)
+- **`humain-overrides.css`** - HUMAIN brand color overrides (required to see your colors!)
+
+### Configuration
 
 Add this to your **tutor plugin** or **edx-configuration** settings:
 
@@ -27,200 +32,67 @@ MFE_CONFIG["PARAGON_THEME_URLS"] = {
         }
     }
 }
+
+# IMPORTANT: Also inject the HUMAIN overrides to apply brand colors
+MFE_CONFIG["CUSTOM_THEME_CSS"] = [
+    "https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-overrides.css"
+]
 """
     )
 )
 ```
 
-That's it! ✨ Open edX will load:
-1. **`core.min.css`** - Paragon component styles
-2. **`light.min.css`** - Light theme WITH HUMAIN tokens already merged in!
+### How It Works
 
-## 🎨 HUMAIN Brand Colors Now Active
+**Load Order (Most Important!):**
 
-When Open edX loads these files, your HUMAIN design tokens are automatically applied:
+1. ✅ **core.min.css** - Loads Paragon's component styles
+2. ✅ **light.min.css** - Loads Paragon's default light theme colors
+3. ✅ **humain-overrides.css** - OVERRIDES Paragon's default colors with HUMAIN brand colors
 
-### Primary Colors
-- **Primary Button**: `#0b6a7f` (Aqua 700) instead of default blue
-- **Primary Hover**: `#00D49C` (Air) instead of default hover color
-- **Secondary**: `#cafffd` (Aqua 100)
-- **Highlight**: `#D0F94A` (Oasis)
+### CSS Variables Being Overridden
 
-### Typography
-- **Body Font**: 'ABCRepro', sans-serif
-- **Heading Font**: 'Optician-Sans', sans-serif
+| Paragon Variable | HUMAIN Variable | Purpose |
+|---|---|---|
+| `--pgn-color-primary-500` | `--humain-brand-primary-fill` | Primary action buttons |
+| `--pgn-color-brand-500` | `--humain-brand-base` | Brand emphasis |
+| `--pgn-color-secondary-500` | `--humain-brand-secondary-fill` | Secondary actions |
+| `--pgn-color-success-500` | `--humain-status-success` | Success messages |
+| `--pgn-color-warning-500` | `--humain-status-warning` | Warning messages |
+| `--pgn-color-danger-500` | `--humain-status-error` | Error messages |
 
-### All Components Updated
-- Buttons use HUMAIN primary colors
-- Cards use HUMAIN surface colors
-- Form fields use HUMAIN styling
-- Text uses HUMAIN typography
+### Troubleshooting
 
-## 📝 What's Included in light.min.css
+**Not seeing HUMAIN brand colors?**
 
-The file now contains:
-1. **101 HUMAIN custom CSS variables** at the top (`:root` selector)
-2. **All original Paragon CSS** below
+✅ Make sure `humain-overrides.css` is being loaded AFTER `light.min.css`
+✅ Check browser DevTools → verify CSS loads in correct order
+✅ Check Network tab → all three CSS files should show 200 status
+✅ Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R)
 
-```css
-:root {
-  --pgn-aqua-50: #eafffe;
-  --pgn-aqua-100: #cafffd;
-  /* ... 99 more custom variables ... */
-  --pgn-brand-primary-fill: #0b6a7f;
-  --pgn-brand-primary-hover: #00D49C;
-  --pgn-component-button-primary-background: #0b6a7f;
-  /* ... */
-}
-/* ... all original Paragon CSS ... */
+**Still not working?**
+
+Check that Open edX is actually using the CDN URLs. You should see these in the page source:
+```html
+<link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/core.min.css">
+<link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/light.min.css">
+<link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-overrides.css">
 ```
 
-When Paragon CSS references variables like `var(--pgn-color-primary-500)`, it now gets your HUMAIN brand color instead of the default!
+### Your HUMAIN Brand Colors
 
-## 🔄 Updating Tokens
-
-If you need to change brand colors, typography, or spacing:
-
-1. **Edit token files** in `tokens/src/`:
-   - `tokens/src/core/colors.json`
-   - `tokens/src/core/typography.json`
-   - `tokens/src/core/spacing.json`
-   - `tokens/src/themes/light/colors.json`
-   - `tokens/src/themes/light/component.json`
-
-2. **Regenerate the merged CSS**:
-   ```bash
-   npm run build-merged-css
-   ```
-
-3. **Commit and push**:
-   ```bash
-   git add docs/paragon/themes/light.min.css
-   git commit -m "Update HUMAIN design tokens"
-   git push
-   ```
-
-4. **Hard refresh in Open edX** (Ctrl+Shift+R)  
-   GitHub Pages updates within seconds, so your changes go live immediately!
-
-## 📊 File Summary
-
-### Before (Default Paragon)
-```
-core.min.css     (519 KB) - Paragon components
-light.min.css    (194 KB) - Default light theme colors
-Total: 713 KB with default colors
-```
-
-### After (HUMAIN Paragon)
-```
-core.min.css           (519 KB) - Paragon components (unchanged)
-light.min.css          (197 KB) - Light theme + 101 HUMAIN tokens
-humain-tokens.css      (3.7 KB) - Tokens only (optional, for reference)
-Total: 716 KB with HUMAIN brand colors
-```
-
-**Only 3 KB overhead added!** 🎯
-
-## 🔧 Customization Examples
-
-### Change Primary Brand Color
-Edit `tokens/src/themes/light/colors.json`:
-```json
-"brand": {
-  "primary": {
-    "fill": { "$value": "#FF6B35" },  // Your new color
-    "onFill": { "$value": "#FFFFFF" }
-  }
-}
-```
-
-Then run: `npm run build-merged-css`
-
-### Change Button Radius
-Edit `tokens/src/core/spacing.json`:
-```json
-"radius": {
-  "button": { "$value": "8px" }  // More rounded
-}
-```
-
-### Add New Typography Style
-Edit `tokens/src/core/typography.json`:
-```json
-"font-size": {
-  "hero": { "$value": "56px" }
-}
-```
-
-## ✨ What Makes This Special
-
-✅ **Zero Configuration** - Just point Open edX to the URLs  
-✅ **Zero JavaScript** - Pure CSS variables  
-✅ **Zero Fragility** - Works with any Paragon version  
-✅ **Automatic Theming** - All components inherit brand colors  
-✅ **Live Updates** - Changes deploy instantly via CDN  
-✅ **Fully Documented** - Token files show every design decision  
-✅ **Easy Maintenance** - Edit JSON files, not CSS  
-
-## 📋 CDN URLs
-
-```
-Core Styles:
-https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/core.min.css
-
-Light Theme with HUMAIN Tokens:
-https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/light.min.css
-
-Tokens Only (Reference):
-https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-tokens.css
-```
-
-## 🎓 Open edX MFE Config Deep Dive
-
-The configuration tells Open edX:
-
-```python
-MFE_CONFIG["PARAGON_THEME_URLS"] = {
-    # ↓ Always load core styles first
-    "core": {
-        "url": "https://..../core.min.css"
-    },
-    
-    # ↓ Default to "light" theme
-    "defaults": {
-        "light": "light"
-    },
-    
-    # ↓ Define the "light" variant
-    "variants": {
-        "light": {
-            "url": "https://..../light.min.css"  # ← Now has HUMAIN tokens!
-        }
-    }
-}
-```
-
-Open edX's React components will use these URLs to load styling, and since `light.min.css` includes all the HUMAIN token variables, all components automatically get your brand styling!
-
-## 🐛 Troubleshooting
-
-**Q: Colors aren't changing in Open edX?**  
-A: Hard refresh (Ctrl+Shift+R) and check browser DevTools that the CSS loaded correctly.
-
-**Q: I updated tokens but changes aren't showing?**  
-A: Run `npm run build-merged-css` then `git push` - it should update within seconds.
-
-**Q: Which variables does Open edX use?**  
-A: Check the `light.min.css` file - every `--pgn-*` variable is available to Paragon components.
-
-**Q: Can I add more tokens?**  
-A: Yes! Add to any `tokens/src/*/` JSON file, then run `npm run build-merged-css`.
+- **Primary:** `#0b6a7f` (teal/dark aqua)
+- **Hover:** `#00D49C` (bright aqua/mint)
+- **Highlight:** `#D0F94A` (bright yellow)
+- **Success:** `#16a34a` (green)
+- **Warning:** `#d97706` (orange)
+- **Error:** `#dc2626` (red)
 
 ---
 
-**Status**: ✅ Live and integrated with Open edX!  
-**Last Updated**: November 2, 2025  
-**Tokens**: 101 custom design variables  
-**File Size**: +3 KB overhead  
-**Deployment Time**: Instant (GitHub Pages)
+**Next Steps:**
+
+1. Update your Open edX configuration with the code above
+2. Restart your Open edX services
+3. Hard refresh your browser
+4. Your interface should now display HUMAIN brand colors!
