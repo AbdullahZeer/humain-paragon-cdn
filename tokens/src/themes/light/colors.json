@@ -14,23 +14,18 @@
       "highlight": {
         "fill": { "$value": "#D0F94A" },
         "text": { "$value": "#18181B" }
-      },
-      "gradient": {
-        "brand": { "$value": "linear-gradient(180deg, #D0F94A 0%, #00D49C 50%, #00879f 100%)" },
-        "keyline": { "$value": "linear-gradient(90deg, #00a9c4, #0cf3ff)" },
-        "textShimmer": { "$value": "linear-gradient(90deg, #0b6a7f 0%, #00d5ea 35%, #0b6a7f 70%)" }
       }
     },
     "surface": {
-      "base": { "$value": "{color.zinc.50}" },
+      "base": { "$value": "#fafafa" },
       "elevated": { "$value": "#ffffff" },
-      "border": { "$value": "{color.zinc.200}" }
+      "border": { "$value": "#e4e4e7" }
     },
     "text": {
-      "heading": { "$value": "{color.zinc.950}" },
-      "primary": { "$value": "{color.zinc.900}" },
-      "secondary": { "$value": "{color.zinc.600}" },
-      "muted": { "$value": "{color.zinc.400}" }
+      "heading": { "$value": "#09090b" },
+      "primary": { "$value": "#18181b" },
+      "secondary": { "$value": "#52525b" },
+      "muted": { "$value": "#a1a1aa" }
     }
   }
 }

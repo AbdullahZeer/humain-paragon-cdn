@@ -2,30 +2,30 @@
   "component": {
     "button": {
       "primary": {
-        "background": { "$value": "{color.brand.primary.fill}" },
-        "text": { "$value": "{color.brand.primary.onFill}" },
+        "background": { "$value": "#0b6a7f" },
+        "text": { "$value": "#FFFFFF" },
         "hover": {
-          "background": { "$value": "{color.brand.primary.hover}" },
-          "text": { "$value": "{color.brand.primary.onHover}" }
+          "background": { "$value": "#00D49C" },
+          "text": { "$value": "#18181B" }
         }
       },
-      "radius": { "$value": "{radius.full}" },
-      "paddingY": { "$value": "{spacing.3}" },
-      "paddingX": { "$value": "{spacing.6}" },
-      "fontSize": { "$value": "{typography.font.size.sm}" }
+      "radius": { "$value": "999rem" },
+      "paddingY": { "$value": "12px" },
+      "paddingX": { "$value": "24px" },
+      "fontSize": { "$value": "14px" }
     },
     "card": {
-      "background": { "$value": "{color.surface.elevated}" },
-      "border": { "$value": "{color.surface.border}" },
-      "radius": { "$value": "{radius.lg}" },
-      "padding": { "$value": "{spacing.6}" },
-      "shadow": { "$value": "{shadow.sm}" }
+      "background": { "$value": "#ffffff" },
+      "border": { "$value": "#e4e4e7" },
+      "radius": { "$value": "0.5rem" },
+      "padding": { "$value": "24px" },
+      "shadow": { "$value": "0 1px 2px 0 rgba(0,0,0,0.05)" }
     },
     "field": {
-      "background": { "$value": "{color.surface.base}" },
-      "border": { "$value": "{color.surface.border}" },
-      "text": { "$value": "{color.text.primary}" },
-      "radius": { "$value": "{radius.md}" },
+      "background": { "$value": "#fafafa" },
+      "border": { "$value": "#e4e4e7" },
+      "text": { "$value": "#18181b" },
+      "radius": { "$value": "0.375rem" },
       "focusRing": { "$value": "0 0 0 3px rgba(0, 212, 156, 0.24)" }
     }
   }
