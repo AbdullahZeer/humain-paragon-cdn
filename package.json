@@ -6,6 +6,7 @@
     "build-tokens": "paragon build-tokens --source ./tokens/ --build-dir ./build/tokens -t core -t light",
     "build-scss": "paragon build-scss --corePath ./paragon/core.scss --themesPath ./build/tokens --source ./tokens/",
     "build": "npm run build-tokens && npm run build-scss",
+    "build-tokens-custom": "node build-custom-css.js",
     "paragon:help": "paragon --help"
   },
   "devDependencies": {},

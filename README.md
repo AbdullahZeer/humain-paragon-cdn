@@ -1,101 +1,103 @@
-# HUMAIN Paragon CDN
+## HUMAIN Paragon CDN
 
-This repository hosts Paragon CSS files for HUMAIN Open edX theme.
+A Content Delivery Network (CDN) for serving **Open edX Paragon** component library CSS files with integrated **HUMAIN custom design tokens**.
 
-## 📦 Files
+### Files Available
 
-- `dist/paragon/themes/core.min.css` - Paragon core styles (507 KB)
-- `dist/paragon/themes/light.min.css` - Paragon light theme (190 KB)
+- **`core.min.css`** - Paragon core component styles (v23.0.0)
+- **`light.min.css`** - Paragon light theme (v23.0.0)
+- **`humain-tokens.css`** - HUMAIN custom design tokens (colors, typography, spacing, components)
 
-## 🚀 Usage
+### Usage
 
-Add the following link tags to your HTML `<head>`:
+To use Paragon with HUMAIN custom tokens in your application, load the CSS files in this order:
 
 ```html
-<!-- Paragon Core Styles -->
+<!-- 1. Paragon Core Styles (required) -->
 <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/core.min.css">
 
-<!-- Paragon Light Theme -->
+<!-- 2. Paragon Light Theme (required) -->
 <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/light.min.css">
 
-<!-- HUMAIN Design Tokens Override (loads your custom brand colors!) -->
+<!-- 3. HUMAIN Custom Tokens (overrides Paragon defaults with brand colors!) -->
 <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-tokens.css">
 ```
 
-**Important:** Load `humain-tokens.css` AFTER the Paragon CSS files so your custom tokens override the defaults.
+> **Important**: Load `humain-tokens.css` AFTER Paragon's CSS files so it can override the default theme with your custom brand colors and typography.
 
-### Example
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Load in this order -->
-  <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/core.min.css">
-  <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/light.min.css">
-  <link rel="stylesheet" href="https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-tokens.css">
-</head>
-<body>
-  <!-- Your components will now use HUMAIN brand colors -->
-  <button class="btn btn-primary">Click Me</button>
-  <div class="card">Card with HUMAIN styling</div>
-</body>
-</html>
+### Custom Tokens Included
+
+#### Brand Colors
+- `--pgn-brand-primary-fill` - Primary brand color (#0b6a7f - aqua-700)
+- `--pgn-brand-primary-onFill` - Text color on primary (#FFFFFF)
+- `--pgn-brand-primary-hover` - Hover state (#00D49C - air-flat)
+- `--pgn-brand-secondary-fill` - Secondary brand color
+- `--pgn-brand-highlight-fill` - Highlight color (#D0F94A - oasis)
+
+#### Typography
+- `--pgn-typography-font-family-body` - 'ABCRepro', sans-serif
+- `--pgn-typography-font-family-heading` - 'Optician-Sans', sans-serif
+- `--pgn-typography-font-size-*` - Font sizes (xs to 3xl)
+- `--pgn-typography-font-weight-*` - Font weights (regular to bold)
+
+#### Spacing & Layout
+- `--pgn-spacing-*` - Spacing scale (0, 1, 2, 3, 4, 6, 8, 12, 16)
+- `--pgn-radius-*` - Border radius values
+- `--pgn-size-breakpoint-*` - Responsive breakpoints
+
+#### Component Styles
+- `--pgn-component-button-*` - Button styling
+- `--pgn-component-card-*` - Card styling
+- `--pgn-component-field-*` - Form field styling
+
+#### Text & Surface
+- `--pgn-text-heading` - Heading text color
+- `--pgn-text-primary` - Primary text color
+- `--pgn-text-secondary` - Secondary text color
+- `--pgn-surface-base` - Base background color
+- `--pgn-surface-elevated` - Elevated surface color
+
+### Token Customization
+
+To customize the design tokens:
+
+1. Edit the token files in `tokens/src/`:
+   - `tokens/src/core/colors.json` - Global color palette
+   - `tokens/src/core/typography.json` - Typography definitions
+   - `tokens/src/core/spacing.json` - Spacing and sizing
+   - `tokens/src/themes/light/colors.json` - Light theme color mappings
+   - `tokens/src/themes/light/component.json` - Component-specific styles
+
+2. Regenerate the CSS file:
+```bash
+node build-custom-css.js
 ```
 
-## Available Files
+3. Commit and push the changes to update the CDN
 
-- **core.min.css** - Core Paragon styles (519 KB)
-- **light.min.css** - Light theme styles (194 KB)  
-- **humain-tokens.css** - HUMAIN design tokens override (CSS variables)
+### Version Information
 
-## Design Tokens
+- **Paragon Version**: 23.0.0
+- **Source CDN**: https://cdn.jsdelivr.net/npm/@openedx/paragon@23.0.0/
+- **GitHub Pages**: Enabled and serving from root directory
 
-Your HUMAIN design tokens are organized into these categories:
+### Setup Instructions
 
-### Colors
-- **Aqua** - Primary brand palette (#0b6a7f to #eafffe)
-- **Zinc** - Neutral palette (#09090b to #fafafa)
-- **Air** - Accent #00D49C
-- **Oasis** - Highlight #D0F94A
-- **Status** - Success, Warning, Error colors
+1. Clone this repository
+2. Create the directory structure: `docs/paragon/themes/`
+3. Place `core.min.css` and `light.min.css` in the themes directory
+4. Run `node build-custom-css.js` to generate `humain-tokens.css`
+5. Configure GitHub Pages to serve from the `docs/` directory
+6. Access files at: `https://[your-username].github.io/humain-paragon-cdn/`
 
-### Typography
-- **Font Families** - ABCRepro (body), Optician-Sans (heading), monospace
-- **Font Sizes** - xs (12px) to 3xl (40px)
-- **Font Weights** - regular (400) to bold (700)
+### CDN URLs
 
-### Spacing
-- **Scale** - 0px to 64px in logical increments
-- **Radius** - 0.25rem to 999rem
-- **Shadows** - sm and md variants
+```
+https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/core.min.css
+https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/light.min.css
+https://abdullahzeer.github.io/humain-paragon-cdn/paragon/themes/humain-tokens.css
+```
 
-## Customization
+### License
 
-To update your design tokens:
-
-1. Edit token files in `tokens/src/`
-2. Update `humain-tokens.css` with new values
-3. Commit and push changes
-4. Your CDN updates automatically
-
-## GitHub Pages Configuration
-
-This CDN is hosted on GitHub Pages. To view settings:
-- Repository: https://github.com/AbdullahZeer/humain-paragon-cdn
-- Pages Settings: Settings → Pages
-- Branch: main
-- Folder: /docs
-
-## Version Information
-
-- Paragon Version: v23.0.0 (CSS only)
-- HUMAIN Design Tokens: 1.0.0
-- Last Updated: November 2, 2025
-
-## 📝 License
-
-These CSS files are from the Open edX Paragon component library.
-Refer to https://github.com/openedx/paragon for more information.
+Paragon CSS files are from [Open edX](https://github.com/edx/frontend-components/tree/master/packages/paragon) under the AGPL-3.0 license.
