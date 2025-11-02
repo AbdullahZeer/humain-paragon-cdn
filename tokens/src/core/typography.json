@@ -1,0 +1,32 @@
+{
+  "typography": {
+    "font": {
+      "family": {
+        "body": { "$value": "'ABCRepro', sans-serif" },
+        "heading": { "$value": "'Optician-Sans', sans-serif" },
+        "mono": { "$value": "ui-monospace, SFMono-Regular, Menlo, monospace" }
+      },
+      "size": {
+        "$type": "dimension",
+        "xs": { "$value": "12px" },
+        "sm": { "$value": "14px" },
+        "md": { "$value": "16px" },
+        "lg": { "$value": "18px" },
+        "xl": { "$value": "24px" },
+        "2xl": { "$value": "32px" },
+        "3xl": { "$value": "40px" }
+      },
+      "weight": {
+        "regular": { "$value": "400" },
+        "medium": { "$value": "500" },
+        "semibold": { "$value": "600" },
+        "bold": { "$value": "700" }
+      },
+      "lineHeight": {
+        "tight": { "$value": "1.1" },
+        "snug": { "$value": "1.25" },
+        "normal": { "$value": "1.5" }
+      }
+    }
+  }
+}

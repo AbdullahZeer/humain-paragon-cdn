@@ -1,0 +1,18 @@
+{
+  "name": "@humain/paragon-cdn",
+  "version": "1.0.0",
+  "description": "HUMAIN Paragon CDN with custom design tokens",
+  "scripts": {
+    "build-tokens": "paragon build-tokens --source ./tokens/ --build-dir ./build/tokens -t core -t light",
+    "build-scss": "paragon build-scss --corePath ./paragon/core.scss --themesPath ./build/tokens --source ./tokens/",
+    "build": "npm run build-tokens && npm run build-scss",
+    "paragon:help": "paragon --help"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "paragon",
+    "design-system",
+    "tokens",
+    "css-variables"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "component": {
+    "button": {
+      "primary": {
+        "background": { "$value": "{color.brand.primary.fill}" },
+        "text": { "$value": "{color.brand.primary.onFill}" },
+        "hover": {
+          "background": { "$value": "{color.brand.primary.hover}" },
+          "text": { "$value": "{color.brand.primary.onHover}" }
+        }
+      },
+      "radius": { "$value": "{radius.full}" },
+      "paddingY": { "$value": "{spacing.3}" },
+      "paddingX": { "$value": "{spacing.6}" },
+      "fontSize": { "$value": "{typography.font.size.sm}" }
+    },
+    "card": {
+      "background": { "$value": "{color.surface.elevated}" },
+      "border": { "$value": "{color.surface.border}" },
+      "radius": { "$value": "{radius.lg}" },
+      "padding": { "$value": "{spacing.6}" },
+      "shadow": { "$value": "{shadow.sm}" }
+    },
+    "field": {
+      "background": { "$value": "{color.surface.base}" },
+      "border": { "$value": "{color.surface.border}" },
+      "text": { "$value": "{color.text.primary}" },
+      "radius": { "$value": "{radius.md}" },
+      "focusRing": { "$value": "0 0 0 3px rgba(0, 212, 156, 0.24)" }
+    }
+  }
+}
