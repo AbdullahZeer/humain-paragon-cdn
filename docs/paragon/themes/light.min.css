@@ -3,3 +3,22 @@
 
 /* HUMAIN overrides embedded directly in light.min.css */
 :root{--pgn-color-primary-base:#0B6A7FFF;--pgn-color-brand-base:#0B6A7FFF;--pgn-color-secondary-base:#CAFFFDFF;--pgn-color-success-base:#16A34AFF;--pgn-color-warning-base:#D97706FF;--pgn-color-danger-base:#DC2626FF;--pgn-color-info-base:#00879FFF}
+/* HUMAIN hardcoded overrides (no vars) */
+.btn-primary{background-color:#0B6A7F!important;border-color:#0B6A7F!important;color:#FFFFFF!important}
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active{background-color:#00D49C!important;border-color:#00D49C!important;color:#18181B!important}
+.btn-secondary{background-color:#CAFFFD!important;border-color:#CAFFFD!important;color:#0E586B!important}
+.btn-secondary:hover,.btn-secondary:focus{background-color:#0B6A7F!important;border-color:#0B6A7F!important;color:#FFFFFF!important}
+a,.link-primary,.btn-link{color:#0B6A7F!important}
+a:hover,.link-primary:hover,.btn-link:hover{color:#00D49C!important}
+.text-primary{color:#0B6A7F!important}
+.bg-primary{background-color:#0B6A7F!important}
+.border-primary{border-color:#0B6A7F!important}
+.text-success{color:#16A34A!important}.bg-success{background-color:#16A34A!important}.border-success{border-color:#16A34A!important}
+.text-warning{color:#D97706!important}.bg-warning{background-color:#D97706!important}.border-warning{border-color:#D97706!important}
+.text-danger{color:#DC2626!important}.bg-danger{background-color:#DC2626!important}.border-danger{border-color:#DC2626!important}
+.text-info{color:#00879F!important}.bg-info{background-color:#00879F!important}.border-info{border-color:#00879F!important}
+.btn-success{background-color:#16A34A!important;border-color:#16A34A!important;color:#FFFFFF!important}
+.btn-warning{background-color:#D97706!important;border-color:#D97706!important;color:#18181B!important}
+.btn-danger{background-color:#DC2626!important;border-color:#DC2626!important;color:#FFFFFF!important}
+.btn-outline-primary{color:#0B6A7F!important;border-color:#0B6A7F!important}
+.btn-outline-primary:hover{background-color:#0B6A7F!important;border-color:#0B6A7F!important;color:#FFFFFF!important}
